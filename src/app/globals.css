@@ -1,27 +1,93 @@
 @import "tailwindcss";
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-code-bg: var(--code-bg);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono-code);
 }
 
 :root {
+  --primary: #0066ff;
+  --primary-foreground: #ffffff;
   --background: #ffffff;
-  --foreground: #171717;
-  --muted: #f5f5f5;
-  --muted-foreground: #737373;
-  --border: #e5e5e5;
+  --foreground: #111827;
+  --surface-container-low: #f9fafb;
+  --surface-container: #f3f4f6;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+  --code-bg: #1a202c;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --muted: #1a1a1a;
-  --muted-foreground: #a3a3a3;
-  --border: #262626;
+  --primary: #4d94ff;
+  --primary-foreground: #ffffff;
+  --background: #0f1117;
+  --foreground: #e2e8f0;
+  --surface-container-low: #111827;
+  --surface-container: #1a202c;
+  --muted: #1a202c;
+  --muted-foreground: #9ca3af;
+  --border: #1f2937;
+  --code-bg: #1a202c;
+}
+
+/* Base */
+body {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+/* Prose typography for MDX content */
+.prose blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--foreground);
+}
+
+.prose pre {
+  background: var(--code-bg);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+.prose code:not(pre code) {
+  background: var(--surface-container);
+  border-radius: 0.25rem;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+}
+
+.dark .prose pre {
+  border: 1px solid #1f2937;
+}
+
+/* Utility: Glass navigation */
+.glass-nav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgb(255 255 255 / 0.8);
+}
+
+.dark .glass-nav {
+  background-color: rgb(15 17 23 / 0.8);
+}
+
+/* Utility: Hero gradient overlay */
+.gradient-hero {
+  background: linear-gradient(135deg, #0066ff 0%, #9333ea 100%);
 }
