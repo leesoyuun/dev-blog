@@ -34,6 +34,39 @@ function parsePost(data: Record<string, unknown>, slug: string): Post {
   };
 }
 
+export type PostWithContent = Post & { content: string };
+
+export type Heading = { id: string; text: string; level: number };
+
+export function slugify(text: string): string {
+  return text
+    .replace(/[*_`[\]()]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^가-힣\w-]/g, "")
+    .toLowerCase();
+}
+
+export function extractHeadings(content: string): Heading[] {
+  return content.split("\n").flatMap((line) => {
+    const match = line.match(/^(#{2,3}) (.+)/);
+    if (!match || !match[1] || !match[2]) return [];
+    const level = match[1].length;
+    const text = match[2].trim().replace(/[*_`[\]()]/g, "");
+    return [{ level, text, id: slugify(text) }];
+  });
+}
+
+export function getPost(slug: string): PostWithContent | null {
+  for (const ext of ["md", "mdx"]) {
+    const filePath = path.join(POSTS_DIR, `${slug}.${ext}`);
+    if (!fs.existsSync(filePath)) continue;
+    const raw = fs.readFileSync(filePath, "utf-8");
+    const { data, content } = matter(raw);
+    return { ...parsePost(data as Record<string, unknown>, slug), content };
+  }
+  return null;
+}
+
 export function getPosts(): Post[] {
   const files = fs.readdirSync(POSTS_DIR).filter((f) => /\.(md|mdx)$/.test(f));
 
