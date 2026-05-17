@@ -15,6 +15,7 @@ import {
 } from "@/features/posts/get-posts";
 import { TableOfContents } from "@/features/posts/TableOfContents";
 import { CopyButton } from "@/features/posts/CopyButton";
+import { MarkAsRead } from "@/features/posts/MarkAsRead";
 import { cn } from "@/shared/utils/cn";
 
 export function generateStaticParams() {
@@ -128,6 +129,8 @@ export default async function PostPage({
           </div>
         </div>
       </header>
+
+      <MarkAsRead postSlug={slug} />
 
       {/* Content */}
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-20 lg:py-24">
