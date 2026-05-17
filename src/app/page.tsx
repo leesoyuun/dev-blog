@@ -2,31 +2,8 @@ import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { PostCard } from "@/features/posts/PostCard";
 import { SeriesCard } from "@/features/series/SeriesCard";
+import { SERIES } from "@/features/series/data";
 import { getPosts } from "@/features/posts/get-posts";
-
-const SERIES = [
-  {
-    slug: "react-deep-dive",
-    title: "React 깊이 파헤치기",
-    description: "렌더링 원리, Concurrent Mode, Compiler까지 — React의 내부를 단계적으로 해부하는 시리즈.",
-    count: 5,
-    tags: ["React"],
-  },
-  {
-    slug: "next-js-complete",
-    title: "Next.js 완전 정복",
-    description: "App Router, 데이터 패칭, 배포 전략까지 Next.js로 프로덕션 앱을 만드는 모든 것.",
-    count: 8,
-    tags: ["Next.js"],
-  },
-  {
-    slug: "typescript-patterns",
-    title: "TypeScript 고급 패턴",
-    description: "조건부 타입, 템플릿 리터럴, Mapped Types 등 실무에서 바로 쓸 수 있는 고급 타입 패턴.",
-    count: 4,
-    tags: ["TypeScript"],
-  },
-] as const;
 
 export default function Home() {
   const posts = getPosts();
