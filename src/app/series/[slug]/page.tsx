@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRight, FileText, Clock, User, ArrowLeft } from "lucide-react";
+import { ChevronRight, FileText, Clock, User, ArrowLeft, PenLine } from "lucide-react";
 import { SERIES } from "@/features/series/data";
 import { ShareButton } from "@/features/series/ShareButton";
 import { SeriesProgress } from "@/features/series/SeriesProgress";
@@ -85,6 +85,15 @@ export default async function SeriesDetailPage({
           </div>
 
           {/* Post list */}
+          {series.posts.length === 0 && (
+            <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border py-16 text-center">
+              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-surface-container">
+                <PenLine className="h-8 w-8 text-primary" />
+              </div>
+              <p className="mb-2 text-base font-semibold text-foreground">아직 포스트가 없어요</p>
+              <p className="text-sm text-muted-foreground">곧 업로드될 예정이에요.</p>
+            </div>
+          )}
           <ol className="space-y-3">
             {series.posts.map((post) => (
               <li key={post.slug}>
