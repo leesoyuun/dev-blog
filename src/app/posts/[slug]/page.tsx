@@ -67,7 +67,7 @@ export default async function PostPage({
     <>
       {/* Hero */}
       <header className="bg-surface-container-low">
-        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-20 lg:py-20">
+        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-20 lg:py-12">
           <Link
             href="/posts"
             className="mb-10 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -92,11 +92,11 @@ export default async function PostPage({
                 </div>
               )}
 
-              <h1 className="mb-8 text-5xl font-black leading-[1.1] tracking-tight text-foreground lg:text-6xl">
+              <h1 className="mb-8 text-3xl font-black leading-[1.1] tracking-tight text-foreground lg:text-4xl">
                 {post.title}
               </h1>
 
-              <p className="max-w-2xl text-xl leading-relaxed text-muted-foreground">
+              <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 {post.description}
               </p>
 
@@ -133,7 +133,7 @@ export default async function PostPage({
       <MarkAsRead postSlug={slug} />
 
       {/* Content */}
-      <div className="mx-auto max-w-7xl px-6 py-12 lg:px-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-20 lg:py-12">
         <div className="grid grid-cols-1 gap-20 lg:grid-cols-12">
           <article className="lg:col-span-9">
             <ReactMarkdown
