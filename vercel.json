@@ -1,3 +1,4 @@
 {
-  "buildCommand": "git submodule update --init --recursive && pnpm run build"
+  "installCommand": "pnpm run install:vercel",
+  "buildCommand": "pnpm run build"
 }

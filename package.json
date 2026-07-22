@@ -9,7 +9,8 @@
     "lint": "eslint",
     "format": "prettier --write .",
     "test": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "install:vercel": "bash scripts/vercel-submodule-workaround.sh && pnpm install"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
