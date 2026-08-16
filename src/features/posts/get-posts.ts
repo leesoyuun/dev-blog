@@ -36,6 +36,16 @@ function parsePost(data: Record<string, unknown>, slug: string): Post {
 
 export type PostWithContent = Post & { content: string };
 
+function resolveImagePaths(content: string, slug: string): string {
+  return content.replace(
+    /(!\[[^\]]*\]\()([^)\s]+)(\))/g,
+    (full, prefix: string, src: string, suffix: string) => {
+      if (/^https?:\/\//.test(src) || src.startsWith("/")) return full;
+      return `${prefix}/posts/${slug}/${path.basename(src)}${suffix}`;
+    },
+  );
+}
+
 export type Heading = { id: string; text: string; level: number };
 
 export function slugify(text: string): string {
@@ -62,7 +72,10 @@ export function getPost(slug: string): PostWithContent | null {
     if (!fs.existsSync(filePath)) continue;
     const raw = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(raw);
-    return { ...parsePost(data as Record<string, unknown>, slug), content };
+    return {
+      ...parsePost(data as Record<string, unknown>, slug),
+      content: resolveImagePaths(content, slug),
+    };
   }
   return null;
 }

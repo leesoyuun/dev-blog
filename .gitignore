@@ -46,3 +46,6 @@ next-env.d.ts
 # claude harness
 _workspace/
 .claude/.lint-needed
+
+# contents/posts 이미지 build-time 복사본 (scripts/copy-post-images.mjs가 재생성)
+/public/posts/
