@@ -46,6 +46,10 @@ function resolveImagePaths(content: string, slug: string): string {
   );
 }
 
+export function resolveLineBreaks(content: string): string {
+  return content.replace(/<br\s*\/?>/gi, "  \n");
+}
+
 export type Heading = { id: string; text: string; level: number };
 
 export function slugify(text: string): string {
@@ -74,7 +78,7 @@ export function getPost(slug: string): PostWithContent | null {
     const { data, content } = matter(raw);
     return {
       ...parsePost(data as Record<string, unknown>, slug),
-      content: resolveImagePaths(content, slug),
+      content: resolveLineBreaks(resolveImagePaths(content, slug)),
     };
   }
   return null;
