@@ -16,6 +16,7 @@ import {
 import { TableOfContents } from "@/features/posts/TableOfContents";
 import { CopyButton } from "@/features/posts/CopyButton";
 import { MarkAsRead } from "@/features/posts/MarkAsRead";
+import { ShareButton } from "@/features/posts/ShareButton";
 import { cn } from "@/shared/utils/cn";
 
 export function generateStaticParams() {
@@ -100,16 +101,12 @@ export default async function PostPage({
                 {post.description}
               </p>
 
-              <time
-                dateTime={post.date}
-                className="mt-10 block text-sm text-muted-foreground"
-              >
-                {new Date(post.date).toLocaleDateString("ko-KR", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
+              <div className="mt-10 flex items-center justify-between">
+                <time dateTime={post.date} className="text-sm text-muted-foreground">
+                  {post.date.replace(/-/g, ".")}
+                </time>
+                <ShareButton title={post.title} />
+              </div>
             </div>
 
             {/* Right: featured image — only when thumbnail exists */}
@@ -197,7 +194,7 @@ export default async function PostPage({
                 },
                 blockquote({ children }) {
                   return (
-                    <blockquote className="my-4 rounded-r-lg border-l-4 border-primary bg-surface-container-low py-4 pl-8 text-xl font-medium italic text-foreground">
+                    <blockquote className="my-4 rounded-r-lg border-l-4 border-primary bg-surface-container-low py-4 pl-8 text-xl font-medium italic text-foreground [&>p]:mb-0">
                       {children}
                     </blockquote>
                   );
