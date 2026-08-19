@@ -163,7 +163,7 @@ export default async function PostPage({
                 },
                 p({ children }) {
                   return (
-                    <p className="mb-8 text-lg leading-[1.8] text-muted-foreground">
+                    <p className="mb-8 text-base leading-[1.8] text-muted-foreground">
                       {children}
                     </p>
                   );
@@ -180,14 +180,14 @@ export default async function PostPage({
                 },
                 ul({ children }) {
                   return (
-                    <ul className="mb-8 ml-6 list-disc space-y-2 text-lg leading-[1.8] text-muted-foreground">
+                    <ul className="mb-8 ml-6 list-disc space-y-2 text-base leading-[1.8] text-muted-foreground">
                       {children}
                     </ul>
                   );
                 },
                 ol({ children }) {
                   return (
-                    <ol className="mb-8 ml-6 list-decimal space-y-2 text-lg leading-[1.8] text-muted-foreground">
+                    <ol className="mb-8 ml-6 list-decimal space-y-2 text-base leading-[1.8] text-muted-foreground">
                       {children}
                     </ol>
                   );
@@ -197,7 +197,7 @@ export default async function PostPage({
                 },
                 blockquote({ children }) {
                   return (
-                    <blockquote className="my-12 rounded-r-lg border-l-4 border-primary bg-surface-container-low py-4 pl-8 text-xl font-medium italic text-foreground">
+                    <blockquote className="my-4 rounded-r-lg border-l-4 border-primary bg-surface-container-low py-4 pl-8 text-xl font-medium italic text-foreground">
                       {children}
                     </blockquote>
                   );
