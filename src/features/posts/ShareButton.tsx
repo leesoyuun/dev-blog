@@ -3,18 +3,11 @@
 import { useState } from "react";
 import { Check, Share2 } from "lucide-react";
 
-export function ShareButton({ title }: { title: string }) {
+export function ShareButton() {
   const [copied, setCopied] = useState(false);
 
   async function share() {
-    const url = window.location.href;
-
-    if (navigator.share) {
-      await navigator.share({ title, url });
-      return;
-    }
-
-    await navigator.clipboard.writeText(url);
+    await navigator.clipboard.writeText(window.location.href);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }

@@ -105,7 +105,7 @@ export default async function PostPage({
                 <time dateTime={post.date} className="text-sm text-muted-foreground">
                   {post.date.replace(/-/g, ".")}
                 </time>
-                <ShareButton title={post.title} />
+                <ShareButton />
               </div>
             </div>
 
