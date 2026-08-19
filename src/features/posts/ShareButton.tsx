@@ -15,7 +15,7 @@ export function ShareButton() {
   return (
     <button
       onClick={share}
-      className="flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+      className="flex cursor-pointer items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary hover:text-primary"
       aria-label="글 공유하기"
     >
       {copied ? (

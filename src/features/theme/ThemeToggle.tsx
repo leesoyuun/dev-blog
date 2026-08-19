@@ -6,7 +6,7 @@ import { useSyncExternalStore } from "react";
 import { cn } from "@/shared/utils/cn";
 
 const btnClass = cn(
-  "flex h-9 w-9 items-center justify-center rounded-lg",
+  "flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg",
   "text-muted-foreground transition-colors hover:bg-surface-container hover:text-foreground",
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 );
